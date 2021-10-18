@@ -1,0 +1,11 @@
+{
+  "server_addr":"localhost",
+  "server_port":3000,
+  "mqtt_addr":"localhost",
+  "mqtt_port":1883,
+
+  "mysql_addr":"localhost",
+  "mysql_id":"mysql_id",
+  "mysql_passwd":"password",
+  "mysql_db":"db_name"
+}
