@@ -3,27 +3,24 @@
 *FileCopyright :  https://gist.github.com/smching/ff414e868e80a6ee2fbc8261f8aebb8f	*
 *																					*
 *************************************************************************************/
+var util = require('./public/js/node/util.js');
 var mqtt = require('mqtt'); //https://www.npmjs.com/package/mqtt
 var Topic = '#'; //subscribe to all topics
 var Broker_URL = 'tcp://192.168.0.13';
-var Database_URL = 'localhost';
+
+var config = util.getConfig;
 
 var options = {
-	clientId: 'MyMQTT',
-	port: 1883,
-	//username: 'mqtt_user',
-	//password: 'mqtt_password',	
+	clientId: config.mqtt_clientId,
+	port: config.mqtt_port,
+	//username: config.mqtt_user,
+	//password: config.mqtt_passwd,	
 	keepalive : 60
 };
 
 var mysql = require('mysql'); //https://www.npmjs.com/package/mysql
 //Create Connection
-var connection = mysql.createConnection({
-	host: Database_URL,
-	user: "root",
-	password: "tkdwns12",
-	database: "mydb"
-});
+var connection = util.getMySQLConnetion();
 
 var client  = mqtt.connect(Broker_URL, options);
 
@@ -113,16 +110,16 @@ function insert_message(topic, message_str, packet) {
 	}); 
 };
 
-
+//count number of delimiters in a string
+var delimiter = "|";
 
 //split a string into an array of substrings
 function extract_string(message_str) {
-	var message_arr = message_str.split("|"); //convert to array	
+	var message_arr = message_str.split(delimiter); //convert to array	
 	return message_arr;
 };	
 
-//count number of delimiters in a string
-var delimiter = "|";
+
 function countInstances(message_str) {
 	var substrings = message_str.split(delimiter);
 	return substrings.length - 1;
