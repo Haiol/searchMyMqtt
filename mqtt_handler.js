@@ -21,11 +21,11 @@ var options = {
 var mysql = require('mysql'); //https://www.npmjs.com/package/mysql
 //Create Connection
 var connection = util.getMySQLConnetion();
-
-var client  = mqtt.connect(Broker_URL, options);
+var client;
 
 class MqttHadler{
 	connect(){
+		client  = mqtt.connect(Broker_URL, options);
 		connection.connect(function(err) {
 			if (err) throw err;
 			console.log("Database Connected!");

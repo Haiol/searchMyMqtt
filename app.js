@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mqttHandler = require('./mqtt_handler');
 var route = require('./routes/route');
-
+var getdata = require('./routes/getdata');
 var app = express();
 
 // view engine setup
@@ -23,6 +23,7 @@ app.use('/node_modules', express.static(path.join(__dirname, '/node_modules')));
 app.use('/js', express.static(__dirname + '/node_modules/jquery/dist')); // redirect JS jQuery
 
 app.use('/', route);
+app.use('/getData',getdata);
 
 
 // catch 404 and forward to error handler
