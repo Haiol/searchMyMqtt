@@ -82,6 +82,7 @@ git clone https://github.com/Haiol/searchMyMqtt.git
 ```
   forever start -c "npm start" ./
 ```
+*Config.Json 안에서 *
 ```json
   "server_addr":"localhost",
   "server_port":3000,
