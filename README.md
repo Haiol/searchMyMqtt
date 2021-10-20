@@ -82,8 +82,25 @@ git clone https://github.com/Haiol/searchMyMqtt.git
 ```
   forever start -c "npm start" ./
 ```
- 
-**JSON값 얻는방법**
+```json
+  "server_addr":"localhost",
+  "server_port":3000,
+
+  "mqtt_addr":"localhost",
+  "mqtt_clientId":"MyMQTT",
+  "mqtt_port":1883,
+  "mqtt_user":"mqtt_user",
+  "mqtt_passwd":"password",
+
+  "mysql_addr":"localhost",
+  "mysql_id":"root",
+  "mysql_passwd":"비밀번호",
+  "mysql_db":"mydb"
+```
+mysql 비밀번호는 정해주세요.
+
+
+**JSON값 얻는방법**<br>
 주소  /getData/[clientID] <br>
 주소  /getData/[clientID]/limit/[숫자] #갯 수 제한 <br>
 주소  /getData/[clientID]/topic/[topic] #부모 토픽으로부터 검색 <br>
