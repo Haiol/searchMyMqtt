@@ -8,7 +8,12 @@ RasberiPi4 (라즈베리파이)
 Wemose D1 R2 ver 2.10 (ESP8266 내장 보드)<br>
 DHT22 (온습도 센서)
 
-**RPI 필요한 프로그램**
+
+>**Arduino**
+
+https://github.com/Haiol/Ino_DHT_MQTT/tree/main
+
+>**RPI**
 
 Mosquitto
 https://mosquitto.org/ 설치 <br>
@@ -63,10 +68,21 @@ https://mariadb.org/<br>
   primary key(`user_code`,`clinet_id`,`client_code`)
   ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 ```
-이제 ./ 에서 파일 받아주시면됩니다.
+이제 ~$ 에서 파일 받아주시면됩니다.
 ```
 git clone https://github.com/Haiol/searchMyMqtt.git
 ```
 
-**Arduino**
+>실행방법
+
+
+```
+  forever start -c "npm start" ./
+```
+
+**JSON값 얻는방법**
+/getData/[clientID]
+/getData/[clientID]/limit/[숫자] #갯 수 제한
+/getData/[clientID]/topic/[topic] #부모 토픽으로부터 검색
+/getData/[clientID]/topic/[topic]/limit/[숫자]
 
