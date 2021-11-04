@@ -34,10 +34,12 @@ router.get('/:clientCode/limit/:limit',(req,res)=>{
 
 router.get('/:clientCode/topic/:topic',(req,res)=>{
     var conn = util.getMySQLConnetion();
-    console.log(req.params.clientCode); 
-    var query = 'select * from tbl_messages where clientID = ? And topic = ? order by time desc'
+    var query = 'select * from tbl_messages where clientID = ? AND topic = ? order by time desc'
     var params = [req.params.clientCode,req.params.topic+'%']
+    console.log(); 
+
     conn.query(query, params, (err, rows, fields)=>{
+        
         if(err)throw err;
         else{
              console.log(rows[0]);
@@ -46,6 +48,27 @@ router.get('/:clientCode/topic/:topic',(req,res)=>{
         }
     })
 });
+
+router.get('/:clientCode/7Days',(req,res)=>{
+    var conn = util.getMySQLConnetion();
+    
+    var query = 'SELECT * FROM tbl_messages where clientID = ? AND time BETWEEN DATE_ADD(NOW(),INTERVAL -1 WEEK ) AND NOW();'
+    var params = [req.params.clientCode,req.params.topic+'%']
+    console.log(); 
+
+    conn.query(query, params, (err, rows, fields)=>{
+        
+        if(err)throw err;
+        else{
+             console.log(rows[0]);
+            
+            res.send(JSON.stringify(rows));
+        }
+    })
+});
+
+
+
 
 
 module.exports = router;
