@@ -33,7 +33,7 @@ exports.postLogin = function (req, res) {
 exports.postGen = function (req, res) {
     var responseData = {}
     var newID = req.body.newID
-    var clientCode = makeid()
+    var clientCode = util.makeid()
     var connGen = util.getMySQLConnetion();
     // connGen.connect();
     console.log(newID+" "+clientCode);

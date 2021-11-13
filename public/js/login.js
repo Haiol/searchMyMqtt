@@ -66,6 +66,7 @@ function generateSubmit() {
     if ($("#newID").val().length > 0) {
         var newID = $("#newID").val();
         verifyGenerate(newID);
+        // alert(newID);
     } else {
         alert("아이디를 입력하지 않았습니다.")
     }
@@ -82,7 +83,7 @@ function verifyGenerate(newID) {
         contentType: 'application/json',
         url: '/generate',
         success: function (response) {
-            console.log(response);
+            // console.log(response);
             if (response.result.startsWith('S')) {
                 var newID = $("#newID");
                 newID.val(response.clientCode);
