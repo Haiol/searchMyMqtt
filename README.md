@@ -76,6 +76,7 @@ git clone https://github.com/Haiol/searchMyMqtt.git
 >실행방법
 
 ```
+  npm install
   npm start
 ```
 
